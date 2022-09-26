@@ -1,9 +1,8 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import styles from '../styles/Home.module.scss'
+// import styles from '../styles/Posts.module.scss'
 
-const Home: NextPage = () => {
+function Posts() {
   return (
     <div>
       <Head>
@@ -16,9 +15,9 @@ const Home: NextPage = () => {
 
       <main>
         <div className="container">
-          <h1>Home page</h1>
-          <Link href="/posts">
-            <a>Posts</a>
+          <h1>Posts page</h1>
+          <Link href="/">
+            <a>&#8592; Back to Home page</a>
           </Link>
         </div>
       </main>
@@ -28,4 +27,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Posts
