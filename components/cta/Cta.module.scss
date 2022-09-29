@@ -1,0 +1,48 @@
+.cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: remify(150px);
+  transition: 0.3s all;
+
+  .cta-icon {
+    margin-right: remify(12px);
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.8;
+  }
+
+  // &.yellow {
+  //   background-color: $colorYellow;
+  //   color: $black;
+  // }
+
+  // &.red {
+  //   background-color: $colorRed2;
+  //   color: $white;
+  // }
+
+  // &.white {
+  //   background-color: $white;
+  //   color: $colorRed2;
+  // }
+
+  &.size-small {
+    padding: remify(12px);
+  }
+
+  &.size-medium {
+    padding: 1rem;
+  }
+
+  &.size-large {
+    padding: fluid(18px, 24px);
+    font-size: fluid(16px, 18px);
+  }
+}

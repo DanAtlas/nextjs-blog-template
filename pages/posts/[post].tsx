@@ -1,35 +1,23 @@
 import type { GetStaticPaths } from 'next';
-import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react';
-import { fetchContent } from 'pages/api/staticData';
-
-type postProps = {
-  slug: string;
-  title: string;
-  date: string;
-}[];
-
-type PostContentProps = {
-  post: postProps
-};
+import Link from 'next/link';
+import { fetchContent } from 'pages/api/posts';
+import type { PostContentProps } from 'pages/types/posts';
 
 export default function postDetail({ post }: PostContentProps) {
-  console.log('post', post)
+  const postItem = post[0];
 
   return (
-    <div>
-      <header></header>
-
-      <main>
-        <div className="container">
-          <h1>Post slug - {post[0].slug}</h1>
-          <h1>Post title - {post[0].title}</h1>
-          <h1>Post date - {post[0].date}</h1>
-        </div>
-        <img src="/vercel.svg" alt="" />
-      </main>
-
-      <footer></footer>
+    <div className="container">
+      <Link href="/posts">
+        <a>&#8592; Back to Posts page</a>
+      </Link>
+      <div className="">
+        <article>
+          <h1>{postItem.title}</h1>
+          <small>Published - {postItem.date}</small>
+        </article>
+        <aside></aside>
+      </div>
     </div>
   )
 }
@@ -40,10 +28,6 @@ export const getStaticProps = async ({ params }: any) =>  {
       return post
     }
   });
-  
-  // const filePath = path.join(process.cwd(), 'json/file1.json');
-  // const jsonData = await fsPromises.readFile(filePath);
-  // const objectData = JSON.parse(jsonData.toString());
 
   return {
     props: {
@@ -53,21 +37,7 @@ export const getStaticProps = async ({ params }: any) =>  {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = fetchContent().map(post => `/posts/${post.slug}`)
-
-  // const paths = fetchContent().map(post => ({
-  //   params: {slug: post.slug.toString()},
-  // }))
-
-  // const paths = fetchContent().map(post => {
-  //   const postSlug = post.slug;
-  //   return {
-  //     params: {
-  //       postSlug
-  //     }
-  //   }
-  // });
-  // console.log('paths', paths)
+  const paths = fetchContent().map(post => `/posts/${post.slug}`);
 
   return {
     paths,
