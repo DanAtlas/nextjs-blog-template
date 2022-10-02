@@ -15,9 +15,6 @@ function Posts({ post }: PostContentProps) {
 
       <section className="container">
         <h1>Recently published</h1>
-        <Link href="/">
-          <a>&#8592; Back to Home page</a>
-        </Link>
         <ul className="posts-list__wrapper">
           {post.map((postItem, key) => {
             return (

@@ -8,9 +8,6 @@ export default function postDetail({ post }: PostContentProps) {
 
   return (
     <div className="container">
-      <Link href="/posts">
-        <a>&#8592; Back to Posts page</a>
-      </Link>
       <div className="">
         <article>
           <h1>{postItem.title}</h1>
