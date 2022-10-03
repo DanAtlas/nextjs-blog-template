@@ -1,0 +1,33 @@
+@import '../../styles/globals.scss';
+
+.theme {
+  &-label {
+    cursor: pointer;
+    opacity: .7;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &-icon {
+    display: block;
+    width: remify(20px);
+    height: remify(20px);
+    background-image: url('/moon.svg');
+    background-size: remify(20px) remify(20px);
+  }
+
+  &-checkbox {
+    @include sr-only;
+
+    &:checked + .theme-icon {
+      background-image: url('/sun.svg');
+    }
+
+    &:focus-visible + .theme-icon {
+      outline-offset: remify(1px);
+      outline: -webkit-focus-ring-color auto remify(1px);
+    }
+  }
+}

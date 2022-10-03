@@ -7,13 +7,15 @@ export default function postDetail({ post }: PostContentProps) {
   const postItem = post[0];
 
   return (
-    <div className="container">
-      <div className="">
-        <article>
-          <h1>{postItem.title}</h1>
-          <small>Published - {postItem.date}</small>
-        </article>
-        <aside></aside>
+    <div className="standard-layout">
+      <div className="container">
+        <div className="post">
+          <article>
+            <h1>{postItem.title}</h1>
+            <small>Published - {postItem.date}</small>
+          </article>
+          <aside></aside>
+        </div>
       </div>
     </div>
   )

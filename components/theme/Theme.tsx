@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from './Theme.module.scss';
 
 function Theme() {
   const [theme, setTheme] = useState('');
@@ -28,7 +29,10 @@ function Theme() {
 
   return (
     <>
-      <label>
+      <label 
+        className={styles['theme-label']}
+        title={theme === 'dark' ? 'Activate light mode' : 'Activate dark mode'}
+      >
         <input
           type="checkbox"
           checked={theme === 'dark'}
@@ -37,8 +41,9 @@ function Theme() {
             setTheme(isChecked);
             onChangeTheme(isChecked)
           }}
+          className={styles['theme-checkbox']}
         />{' '}
-        {theme === 'dark' ? 'Dark' : 'Light'} mode
+        <span className={styles['theme-icon']}></span>
       </label>
     </>
   );

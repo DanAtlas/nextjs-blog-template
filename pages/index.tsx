@@ -13,26 +13,30 @@ const Home: NextPage<PostContentProps> = ({ post }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="container">
-        <h2>Recently published</h2>
-        <Link href="/posts">
-          <a>Posts</a>
-        </Link>
-        <ul className="posts-list__wrapper">
-          {post.map((postItem, key) => {
-            return (
-              <li key={key} className="posts-list__item">
-                <Link href={`posts/${postItem.slug}`}>
-                  <a className="posts-list__link">
-                    <h3 className="posts-list__title">{postItem.title}</h3>
-                    <small className="posts-list__date">{postItem.date}</small>
-                  </a>
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-      </section>
+      <div className="standard-layout">
+        <div className="container">
+          <section>
+            <h2>Recently published</h2>
+            <Link href="/posts">
+              <a>Posts</a>
+            </Link>
+            <ul className="posts-list__wrapper">
+              {post.map((postItem, key) => {
+                return (
+                  <li key={key} className="posts-list__item">
+                    <Link href={`posts/${postItem.slug}`}>
+                      <a className="posts-list__link">
+                        <h3 className="posts-list__title">{postItem.title}</h3>
+                        <small className="posts-list__date">{postItem.date}</small>
+                      </a>
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </section>
+        </div>
+      </div>
     </div>
   )
 }
