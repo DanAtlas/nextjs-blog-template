@@ -1,5 +1,6 @@
+import Head from 'next/head';
 import type { GetStaticPaths } from 'next';
-import Link from 'next/link';
+import Layout from 'components/layout/Layout';
 import { fetchContent } from 'pages/api/posts';
 import type { PostContentProps } from 'pages/types/posts';
 
@@ -7,8 +8,13 @@ export default function postDetail({ post }: PostContentProps) {
   const postItem = post[0];
 
   return (
-    <div className="standard-layout">
-      <div className="container">
+    <>
+      <Head>
+        <title>Post page</title>
+        <meta name="description" content="Post page" />
+      </Head>
+
+      <Layout>
         <div className="post">
           <article>
             <h1>{postItem.title}</h1>
@@ -16,8 +22,8 @@ export default function postDetail({ post }: PostContentProps) {
           </article>
           <aside></aside>
         </div>
-      </div>
-    </div>
+      </Layout>
+    </>
   )
 }
 

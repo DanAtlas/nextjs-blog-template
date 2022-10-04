@@ -1,0 +1,20 @@
+@import '../../styles/globals.scss';
+
+.layout {
+  .container {
+    margin: 0 auto;
+    padding: 0 remify(20px);
+  
+    &.container--large {
+      max-width: remify(1100px);
+    }
+  
+    &.container--medium {
+      max-width: remify(900px);
+    }
+  
+    &.container--small {
+      max-width: remify(675px);
+    }
+  }
+}
