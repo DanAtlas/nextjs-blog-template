@@ -6,7 +6,10 @@ const nextConfig = {
     config.resolve.fallback = { fs: false, path: false };
 
     return config;
-  }
+  },
+  images: {
+    domains: ['images.unsplash.com'],
+  },
 }
 
 module.exports = nextConfig

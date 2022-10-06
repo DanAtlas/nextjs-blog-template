@@ -21,8 +21,8 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--color-background);
-  color: var(--color-text);
+  background: var(--color-background) !important;
+  color: var(--color-text) !important;
 }
 
 a {

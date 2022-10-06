@@ -1,7 +1,9 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import type { GetStaticPaths } from 'next';
 import Layout from 'components/layout/Layout';
-import { fetchContent } from 'pages/api/posts';
+import { fetchPostContent } from 'utils/fetchPostContent';
+import { formatDate } from 'utils/formatDate';
 import type { PostContentProps } from 'pages/types/posts';
 
 export default function postDetail({ post }: PostContentProps) {
@@ -18,7 +20,23 @@ export default function postDetail({ post }: PostContentProps) {
         <div className="post">
           <article>
             <h1>{postItem.title}</h1>
-            <small>Published - {postItem.date}</small>
+            <p>
+              <small>Published - {formatDate(postItem.date)} / by {postItem.author}</small>
+            </p>
+            <p>
+              {postItem.tags.map((tag, index) => <span key={index} className="tag">{tag}</span>)}
+            </p>
+            <div>
+              <Image 
+                src={postItem.bannerUrl}
+                alt={postItem.title}
+                width={700}
+                height={468}
+                objectFit="contain"
+                loading="lazy"
+              />
+            </div>
+            <p>{postItem.description}</p>
           </article>
           <aside></aside>
         </div>
@@ -28,7 +46,7 @@ export default function postDetail({ post }: PostContentProps) {
 }
 
 export const getStaticProps = async ({ params }: any) =>  {
-  const post = fetchContent().filter(post => {
+  const post = fetchPostContent().filter(post => {
     if(post.slug.toString() === params.post) {
       return post
     }
@@ -42,7 +60,7 @@ export const getStaticProps = async ({ params }: any) =>  {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = fetchContent().map(post => `/posts/${post.slug}`);
+  const paths = fetchPostContent().map(post => `/posts/${post.slug}`);
 
   return {
     paths,

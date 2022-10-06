@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from 'components/layout/Layout';
-import { fetchContent } from 'pages/api/posts';
 import type { PostContentProps } from 'pages/types/posts';
+import { fetchPostContent } from 'utils/fetchPostContent';
+import { formatDate } from 'utils/formatDate';
 
 function Posts({ post }: PostContentProps) {
   return (
@@ -22,7 +23,7 @@ function Posts({ post }: PostContentProps) {
                   <Link href={`posts/${postItem.slug}`}>
                     <a className="posts-list__link">
                       <h3 className="posts-list__title">{postItem.title}</h3>
-                      <small className="posts-list__date">{postItem.date}</small>
+                      <small className="posts-list__date">{formatDate(postItem.date)}</small>
                     </a>
                   </Link>
                 </li>
@@ -36,7 +37,7 @@ function Posts({ post }: PostContentProps) {
 }
 
 export const getStaticProps = async () =>  {
-  const post = fetchContent().filter(post => post.slug.toString());
+  const post = fetchPostContent().filter(post => post.slug.toString());
 
   return {
     props: {

@@ -2,7 +2,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from 'components/layout/Layout';
-import { fetchContent } from './api/posts';
+import { fetchPostContent } from 'utils/fetchPostContent';
+import { formatDate } from 'utils/formatDate';
 import type { PostContentProps } from './types/posts';
 
 const Home: NextPage<PostContentProps> = ({ post }) => {
@@ -27,7 +28,7 @@ const Home: NextPage<PostContentProps> = ({ post }) => {
                   <Link href={`posts/${postItem.slug}`}>
                     <a className="posts-list__link">
                       <h3 className="posts-list__title">{postItem.title}</h3>
-                      <small className="posts-list__date">{postItem.date}</small>
+                      <small className="posts-list__date">{formatDate(postItem.date)}</small>
                     </a>
                   </Link>
                 </li>
@@ -41,7 +42,7 @@ const Home: NextPage<PostContentProps> = ({ post }) => {
 }
 
 export const getStaticProps = async () =>  {
-  const post = fetchContent().filter(post => post.slug.toString());
+  const post = fetchPostContent().filter(post => post.slug.toString());
 
   return {
     props: {
