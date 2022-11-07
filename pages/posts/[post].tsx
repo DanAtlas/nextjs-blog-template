@@ -5,6 +5,7 @@ import Layout from 'components/layout/Layout';
 import { fetchPostContent } from 'utils/fetchPostContent';
 import { formatDate } from 'utils/formatDate';
 import type { PostContentProps } from 'pages/types/posts';
+import Heading from 'components/heading/Heading';
 
 export default function postDetail({ post }: PostContentProps) {
   const postItem = post[0];
@@ -12,14 +13,16 @@ export default function postDetail({ post }: PostContentProps) {
   return (
     <>
       <Head>
-        <title>Post page</title>
-        <meta name="description" content="Post page" />
+        <title>{postItem.title}</title>
+        <meta name="description" content={postItem.description} />
       </Head>
 
       <Layout>
         <div className="post">
           <article>
-            <h1>{postItem.title}</h1>
+            <Heading headingLevel="h1" className={''}>
+              {postItem.title}
+            </Heading>
             <p>
               <small>Published - {formatDate(postItem.date)} / by {postItem.author}</small>
             </p>

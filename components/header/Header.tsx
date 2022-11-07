@@ -16,8 +16,8 @@ function Header() {
           <Link href={'/'}>
             <a className={styles['header-nav__logo']} title={'Opens the Home page'}>
               <Image
-                width={283}
-                height={64}
+                width={178}
+                height={40}
                 quality={100}
                 src={props.logo.src}
                 alt={props.logo.alt}

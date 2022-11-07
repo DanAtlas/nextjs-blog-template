@@ -4,25 +4,26 @@ import Layout from 'components/layout/Layout';
 import type { PostContentProps } from 'pages/types/posts';
 import { fetchPostContent } from 'utils/fetchPostContent';
 import { formatDate } from 'utils/formatDate';
+import Heading from 'components/heading/Heading';
 
 function Posts({ post }: PostContentProps) {
   return (
     <>
       <Head>
         <title>Posts page</title>
-        <meta name="description" content="Posts page" />
+        <meta name="description" content="Posts list page" />
       </Head>
 
       <Layout>
         <section>
-          <h1>Recently published</h1>
+          <Heading headingLevel="h1" className={''}>Recently published</Heading>
           <ul className="posts-list__wrapper">
             {post.map((postItem, key) => {
               return (
                 <li key={key} className="posts-list__item">
                   <Link href={`posts/${postItem.slug}`}>
                     <a className="posts-list__link">
-                      <h3 className="posts-list__title">{postItem.title}</h3>
+                      <Heading headingLevel="h3" className={'posts-list__title'}>{postItem.title}</Heading>
                       <small className="posts-list__date">{formatDate(postItem.date)}</small>
                     </a>
                   </Link>

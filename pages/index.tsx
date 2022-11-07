@@ -5,19 +5,20 @@ import Layout from 'components/layout/Layout';
 import { fetchPostContent } from 'utils/fetchPostContent';
 import { formatDate } from 'utils/formatDate';
 import type { PostContentProps } from './types/posts';
+import Heading from 'components/heading/Heading';
 
 const Home: NextPage<PostContentProps> = ({ post }) => {
   return (
     <>
       <Head>
-        <title>Next.js boilerplate</title>
-        <meta name="description" content="Next.js boilerplate" />
+        <title>Next.js blog template</title>
+        <meta name="description" content="Next.js blog template" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Layout>
         <section>
-          <h2>Recently published</h2>
+          <Heading headingLevel="h2" className={''}>Recently published</Heading>
           <Link href="/posts">
             <a>Posts</a>
           </Link>
@@ -27,7 +28,7 @@ const Home: NextPage<PostContentProps> = ({ post }) => {
                 <li key={key} className="posts-list__item">
                   <Link href={`posts/${postItem.slug}`}>
                     <a className="posts-list__link">
-                      <h3 className="posts-list__title">{postItem.title}</h3>
+                      <Heading headingLevel="h4" className={'posts-list__title'}>{postItem.title}</Heading>
                       <small className="posts-list__date">{formatDate(postItem.date)}</small>
                     </a>
                   </Link>

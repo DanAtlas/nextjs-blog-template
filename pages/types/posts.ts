@@ -9,5 +9,5 @@ export type PostProps = {
 }[];
 
 export type PostContentProps = {
-  post: PostProps
+  post: PostProps;
 };

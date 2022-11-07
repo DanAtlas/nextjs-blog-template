@@ -3,7 +3,7 @@ import type { HeaderContentProps } from './Header.types';
 export const headerContentMock: HeaderContentProps = {
   logo: {
     src: '/vercel.svg',
-    alt: 'Vercel logo'
+    alt: 'Vercel logo',
   },
   nav: [
     {
@@ -16,5 +16,5 @@ export const headerContentMock: HeaderContentProps = {
       copy: 'Posts',
       title: 'Opens the Posts page',
     },
-  ]
-}
+  ],
+};

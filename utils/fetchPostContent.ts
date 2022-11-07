@@ -15,10 +15,10 @@ export function fetchPostContent(): PostProps {
 
   const postFileNames = fs.readdirSync(postsPath);
   const postContentData = postFileNames
-    .filter((item: string) => item.endsWith(".mdx"))
+    .filter((item: string) => item.endsWith('.mdx'))
     .map((fileName: string) => {
       const filePath = path.join(postsPath, fileName);
-      const fileContent = fs.readFileSync(filePath, "utf8");
+      const fileContent = fs.readFileSync(filePath, 'utf8');
       const { content, data: frontmatter } = matter(fileContent);
       // const MdxSource = serialize(content);
       const json = JSON.parse(JSON.stringify(frontmatter));
@@ -32,7 +32,7 @@ export function fetchPostContent(): PostProps {
         bannerUrl: string;
       };
 
-      return jsonData
+      return jsonData;
     });
 
   postCache = postContentData.sort((a, b) => {
