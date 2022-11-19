@@ -3,6 +3,9 @@ import React from 'react';
 import Script from 'next/script';
 import Header from '../components/header/Header';
 import '../styles/main.scss';
+// Todo: Change css with a corresponding theme
+import 'highlight.js/styles/base16/tomorrow-night.css'; // for dark theme
+// import 'highlight.js/styles/base16/tomorrow.css'; // for light theme
 
 function MyApp({ Component, pageProps }: AppProps) {  
   return (

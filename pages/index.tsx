@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from 'components/layout/Layout';
-import { fetchPostContent } from 'utils/fetchPostContent';
+import { fetchPostHeader } from 'utils/mdxUtils';
 import { formatDate } from 'utils/formatDate';
 import type { PostContentProps } from './types/posts';
 import Heading from 'components/heading/Heading';
@@ -43,7 +43,7 @@ const Home: NextPage<PostContentProps> = ({ post }) => {
 }
 
 export const getStaticProps = async () =>  {
-  const post = fetchPostContent().filter(post => post.slug.toString());
+  const post = fetchPostHeader().filter(post => post.slug.toString());
 
   return {
     props: {

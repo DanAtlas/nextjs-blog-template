@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout from 'components/layout/Layout';
 import type { PostContentProps } from 'pages/types/posts';
-import { fetchPostContent } from 'utils/fetchPostContent';
+import { fetchPostHeader } from 'utils/mdxUtils';
 import { formatDate } from 'utils/formatDate';
 import Heading from 'components/heading/Heading';
 
@@ -38,7 +38,7 @@ function Posts({ post }: PostContentProps) {
 }
 
 export const getStaticProps = async () =>  {
-  const post = fetchPostContent().filter(post => post.slug.toString());
+  const post = fetchPostHeader().filter(post => post.slug.toString());
 
   return {
     props: {
