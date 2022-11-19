@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from 'components/layout/Layout';
-import type { PostContentProps } from 'pages/types/posts';
+import type { PostContentProps } from 'types/posts';
 import { fetchPostHeader } from 'utils/mdxUtils';
 import { formatDate } from 'utils/formatDate';
 import Heading from 'components/heading/Heading';

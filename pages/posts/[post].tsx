@@ -5,7 +5,7 @@ import Layout from 'components/layout/Layout';
 import BlogHeader from 'components/blog-header/BlogHeader';
 import BlogContent from 'components/blog-content/BlogContent';
 import { fetchPostHeader, postsPath } from 'utils/mdxUtils';
-import type { PostContentProps } from 'pages/types/posts';
+import type { PostContentProps } from 'types/posts';
 import path from 'path';
 import fs from 'fs';
 import { serialize } from 'next-mdx-remote/serialize';

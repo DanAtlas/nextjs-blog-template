@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div>
       <Script
+        id="color-scheme-script"
         strategy={'beforeInteractive'}
         dangerouslySetInnerHTML={{
           __html: setColorByTheme(),

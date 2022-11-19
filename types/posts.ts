@@ -16,5 +16,5 @@ export type PostItemContentProps = {
 
 export type PostContentProps = {
   post: PostsProps;
-  postContent: Object;
+  postContent: object;
 };

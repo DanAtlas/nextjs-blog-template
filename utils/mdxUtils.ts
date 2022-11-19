@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import type { PostsProps } from '../pages/types/posts';
+import type { PostsProps } from '../types/posts';
 import matter from 'gray-matter';
 
 export const postsPath = path.join(process.cwd(), 'posts');

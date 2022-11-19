@@ -3,7 +3,7 @@ import styles from './BlogHeader.module.scss';
 import Image from 'next/image';
 import { formatDate } from '../../utils/formatDate';
 import Heading from '../heading/Heading';
-import type { PostItemContentProps } from 'pages/types/posts';
+import type { PostItemContentProps } from 'types/posts';
 
 function BlogHeader({postItem}: PostItemContentProps) {
   // console.log('postItem', postItem)

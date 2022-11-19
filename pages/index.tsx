@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Layout from 'components/layout/Layout';
 import { fetchPostHeader } from 'utils/mdxUtils';
 import { formatDate } from 'utils/formatDate';
-import type { PostContentProps } from './types/posts';
+import type { PostContentProps } from '../types/posts';
 import Heading from 'components/heading/Heading';
 
 const Home: NextPage<PostContentProps> = ({ post }) => {

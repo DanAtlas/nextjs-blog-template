@@ -3,7 +3,7 @@ import styles from './BlogContent.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import Heading from '../heading/Heading';
-import type { PostContentProps } from 'pages/types/posts';
+import type { PostContentProps } from 'types/posts';
 import { MDXRemote } from 'next-mdx-remote';
 
 function BlogContent({postContent}: PostContentProps) {
