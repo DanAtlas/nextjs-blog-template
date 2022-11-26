@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Theme.module.scss';
+import { useAppContext } from '../../utils/contextHelper';
 
 function Theme() {
-  const [theme, setTheme] = useState('');
+  const {theme, setTheme} = useAppContext();
   const [componentMounted, setComponentMounted] = useState(false);
 
   useEffect(() => {

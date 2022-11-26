@@ -11,6 +11,8 @@ import fs from 'fs';
 import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
 import rehypeHighlight from 'rehype-highlight';
+import { useAppContext } from 'utils/contextHelper';
+import ThemeStyles from 'components/theme/ThemeStyles';
 
 interface Params extends ParsedUrlQuery {
   post: string,
@@ -18,6 +20,7 @@ interface Params extends ParsedUrlQuery {
 
 export default function postDetail({ post, postContent }: PostContentProps) {
   const postItem = post[0];
+  const { theme } = useAppContext();
 
   return (
     <>
@@ -27,6 +30,7 @@ export default function postDetail({ post, postContent }: PostContentProps) {
       </Head>
 
       <Layout>
+        <ThemeStyles theme={theme} />
         <div className="post">
           <article>
             <BlogHeader postItem={postItem}></BlogHeader>

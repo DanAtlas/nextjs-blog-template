@@ -3,27 +3,28 @@ import React from 'react';
 import Script from 'next/script';
 import Header from '../components/header/Header';
 import '../styles/main.scss';
-// Todo: Change css with a corresponding theme
-import 'highlight.js/styles/base16/tomorrow-night.css'; // for dark theme
-// import 'highlight.js/styles/base16/tomorrow.css'; // for light theme
+import AppProvider from 'context/AppContext';
 
-function MyApp({ Component, pageProps }: AppProps) {  
+
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div>
-      <Script
-        id="color-scheme-script"
-        strategy={'beforeInteractive'}
-        dangerouslySetInnerHTML={{
-          __html: setColorByTheme(),
-        }}
-      />
-      
-      <Header />
-      <main>
-        <Component {...pageProps} />
-      </main>
-      <footer></footer>
-    </div>
+    <AppProvider>
+      <div>
+        <Script
+          id="color-scheme-script"
+          strategy={'beforeInteractive'}
+          dangerouslySetInnerHTML={{
+            __html: setColorByTheme(),
+          }}
+        />
+
+        <Header />
+        <main>
+          <Component {...pageProps} />
+        </main>
+        <footer></footer>
+      </div>
+    </AppProvider>
   )
 }
 
