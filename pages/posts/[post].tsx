@@ -1,14 +1,26 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import type { GetStaticPaths } from 'next';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { ParsedUrlQuery } from 'querystring';
+import { serialize } from 'next-mdx-remote/serialize';
+import matter from 'gray-matter';
+import rehypeHighlight from 'rehype-highlight';
+import path from 'path';
+import fs from 'fs';
 import Layout from 'components/layout/Layout';
-import { fetchPostContent } from 'utils/fetchPostContent';
-import { formatDate } from 'utils/formatDate';
-import type { PostContentProps } from 'pages/types/posts';
-import Heading from 'components/heading/Heading';
+import BlogHeader from 'components/blog-header/BlogHeader';
+import BlogContent from 'components/blog-content/BlogContent';
+import ThemeStyles from 'components/theme/ThemeStyles';
+import { fetchPostHeader, postsPath } from 'utils/mdxUtils';
+import { useAppContext } from 'utils/contextHelper';
+import type { PostContentProps } from 'types/posts';
 
-export default function postDetail({ post }: PostContentProps) {
+interface Params extends ParsedUrlQuery {
+  post: string;
+}
+
+export default function postDetail({ post, postContent }: PostContentProps) {
   const postItem = post[0];
+  const { theme } = useAppContext();
 
   return (
     <>
@@ -18,52 +30,42 @@ export default function postDetail({ post }: PostContentProps) {
       </Head>
 
       <Layout>
+        <ThemeStyles theme={theme} />
         <div className="post">
           <article>
-            <Heading headingLevel="h1" className={''}>
-              {postItem.title}
-            </Heading>
-            <p>
-              <small>Published - {formatDate(postItem.date)} / by {postItem.author}</small>
-            </p>
-            <p>
-              {postItem.tags.map((tag, index) => <span key={index} className="tag">{tag}</span>)}
-            </p>
-            <div>
-              <Image 
-                src={postItem.bannerUrl}
-                alt={postItem.title}
-                width={700}
-                height={468}
-                objectFit="contain"
-                loading="lazy"
-              />
-            </div>
-            <p>{postItem.description}</p>
+            <BlogHeader postItem={postItem}></BlogHeader>
+            <BlogContent postContent={postContent} post={post}></BlogContent>
           </article>
           <aside></aside>
         </div>
       </Layout>
     </>
-  )
+  );
 }
 
-export const getStaticProps = async ({ params }: any) =>  {
-  const post = fetchPostContent().filter(post => {
-    if(post.slug.toString() === params.post) {
-      return post
-    }
+export const getStaticProps: GetStaticProps = async (context) => {
+  const params = context.params as Params;
+  const post = fetchPostHeader().filter((post) => post.slug === params.post);
+
+  const filePath = path.join(postsPath, `${params.post}.mdx`);
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const { content } = matter(fileContent);
+  const postContent = await serialize(content, {
+    mdxOptions: {
+      rehypePlugins: [rehypeHighlight],
+    },
   });
 
   return {
     props: {
-      post
-    }
-  }
-}
+      post,
+      postContent,
+    },
+  };
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = fetchPostContent().map(post => `/posts/${post.slug}`);
+  const paths = fetchPostHeader().map((post) => `/posts/${post.slug}`);
 
   return {
     paths,

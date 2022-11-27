@@ -1,11 +1,14 @@
 @import '../../styles/globals.scss';
 
 .header {
-  position: sticky;
-  top: remify(-1px);
-  z-index: 3;
   background-color: var(--color-background);
   justify-content: space-between;
+
+  &-wrapper {
+    position: sticky;
+    top: remify(-1px);
+    z-index: 5;
+  }
 
   &,
   &-left,

@@ -9,9 +9,7 @@ const Heading = ({ headingLevel = 'h1', children, className }: HeadingProps) => 
   const Heading = ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) =>
     React.createElement(headingLevel, props, children);
 
-  return (
-    <Heading className={[styles['heading'], className].join(' ')}>{children}</Heading>
-  );
+  return <Heading className={[styles['heading'], className].join(' ')}>{children}</Heading>;
 };
 
 export default Heading;
