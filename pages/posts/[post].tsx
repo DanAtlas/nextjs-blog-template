@@ -1,21 +1,21 @@
 import Head from 'next/head';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { ParsedUrlQuery } from 'querystring';
-import Layout from 'components/layout/Layout';
-import BlogHeader from 'components/blog-header/BlogHeader';
-import BlogContent from 'components/blog-content/BlogContent';
-import { fetchPostHeader, postsPath } from 'utils/mdxUtils';
-import type { PostContentProps } from 'types/posts';
-import path from 'path';
-import fs from 'fs';
 import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
 import rehypeHighlight from 'rehype-highlight';
-import { useAppContext } from 'utils/contextHelper';
+import path from 'path';
+import fs from 'fs';
+import Layout from 'components/layout/Layout';
+import BlogHeader from 'components/blog-header/BlogHeader';
+import BlogContent from 'components/blog-content/BlogContent';
 import ThemeStyles from 'components/theme/ThemeStyles';
+import { fetchPostHeader, postsPath } from 'utils/mdxUtils';
+import { useAppContext } from 'utils/contextHelper';
+import type { PostContentProps } from 'types/posts';
 
 interface Params extends ParsedUrlQuery {
-  post: string,
+  post: string;
 }
 
 export default function postDetail({ post, postContent }: PostContentProps) {
@@ -40,16 +40,12 @@ export default function postDetail({ post, postContent }: PostContentProps) {
         </div>
       </Layout>
     </>
-  )
+  );
 }
 
-export const getStaticProps: GetStaticProps = async (context) =>  {
+export const getStaticProps: GetStaticProps = async (context) => {
   const params = context.params as Params;
-  const post = fetchPostHeader().filter(post => {
-    if(post.slug.toString() === params.post) {
-      return post
-    }
-  });
+  const post = fetchPostHeader().filter((post) => post.slug === params.post);
 
   const filePath = path.join(postsPath, `${params.post}.mdx`);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
@@ -66,10 +62,10 @@ export const getStaticProps: GetStaticProps = async (context) =>  {
       postContent,
     },
   };
-}
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = fetchPostHeader().map(post => `/posts/${post.slug}`);
+  const paths = fetchPostHeader().map((post) => `/posts/${post.slug}`);
 
   return {
     paths,

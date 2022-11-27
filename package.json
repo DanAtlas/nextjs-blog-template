@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prettify": "prettier --write \"./{pages,components,styles,utils,context}/**/*.{js,ts,scss}\""
+    "prettify": "prettier --write \"./{pages,components,styles,utils,context}/**/*.{js,jsx,tsx,ts,scss}\""
   },
   "prettier": "@mediamonks/prettier-config",
   "dependencies": {

@@ -3,7 +3,7 @@ import styles from './Theme.module.scss';
 import { useAppContext } from '../../utils/contextHelper';
 
 function Theme() {
-  const {theme, setTheme} = useAppContext();
+  const { theme, setTheme } = useAppContext();
   const [componentMounted, setComponentMounted] = useState(false);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ function Theme() {
 
     if (localTheme) {
       setTheme(localTheme);
-      localTheme === 'dark' ? htmlClassList.add(localTheme) : htmlClassList.remove(localTheme)
+      localTheme === 'dark' ? htmlClassList.add(localTheme) : htmlClassList.remove(localTheme);
     } else {
       setTheme(preferredTheme ? 'dark' : 'light');
       preferredTheme ? htmlClassList.add('dark') : htmlClassList.remove('dark');
@@ -30,7 +30,7 @@ function Theme() {
 
   return (
     <>
-      <label 
+      <label
         className={styles['theme-label']}
         title={theme === 'dark' ? 'Activate light mode' : 'Activate dark mode'}
       >
@@ -40,7 +40,7 @@ function Theme() {
           onChange={(event) => {
             const isChecked = event.target.checked ? 'dark' : 'light';
             setTheme(isChecked);
-            onChangeTheme(isChecked)
+            onChangeTheme(isChecked);
           }}
           className={styles['theme-checkbox']}
         />{' '}
@@ -48,6 +48,6 @@ function Theme() {
       </label>
     </>
   );
-};
+}
 
 export default Theme;

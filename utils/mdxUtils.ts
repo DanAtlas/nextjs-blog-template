@@ -1,7 +1,7 @@
+import matter from 'gray-matter';
 import path from 'path';
 import fs from 'fs';
 import type { PostsProps } from '../types/posts';
-import matter from 'gray-matter';
 
 export const postsPath = path.join(process.cwd(), 'posts');
 
@@ -33,12 +33,6 @@ export function fetchPostHeader(): PostsProps {
       return jsonData;
     });
 
-  postCache = postHeaderData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+  postCache = postHeaderData.sort((a, b) => (a.date < b.date ? 1 : -1));
   return postCache;
 }

@@ -2,9 +2,8 @@ import type { AppProps } from 'next/app';
 import React from 'react';
 import Script from 'next/script';
 import Header from '../components/header/Header';
-import '../styles/main.scss';
 import AppProvider from 'context/AppContext';
-
+import '../styles/main.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -25,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <footer></footer>
       </div>
     </AppProvider>
-  )
+  );
 }
 
 function setPreBodyScript() {
@@ -40,7 +39,9 @@ function setPreBodyScript() {
 
   if (hasUsedToggle) {
     theme = persistedPreference;
-    persistedPreference === 'dark' ? htmlClassList.add(persistedPreference) : htmlClassList.remove(persistedPreference)
+    persistedPreference === 'dark'
+      ? htmlClassList.add(persistedPreference)
+      : htmlClassList.remove(persistedPreference);
   } else {
     theme = preferredTheme ? 'dark' : 'light';
     preferredTheme ? htmlClassList.add('dark') : htmlClassList.remove('dark');
@@ -49,7 +50,7 @@ function setPreBodyScript() {
 
 function setColorByTheme() {
   const boundFn = String(setPreBodyScript);
-  
+
   return `(${boundFn})()`;
 }
 

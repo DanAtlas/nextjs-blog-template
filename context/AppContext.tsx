@@ -1,10 +1,4 @@
-import React, { 
-  useState, 
-  createContext, 
-  Dispatch,
-  PropsWithChildren,
-  SetStateAction, 
-} from 'react';
+import React, { useState, createContext, Dispatch, PropsWithChildren, SetStateAction } from 'react';
 
 interface ContextState {
   theme: string | null;

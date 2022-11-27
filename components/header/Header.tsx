@@ -1,17 +1,17 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Header.module.scss';
-import Cta from 'components/cta/Cta';
-import Layout from 'components/layout/Layout';
+import Cta from '../cta/Cta';
+import Layout from '../layout/Layout';
+import Theme from '../theme/Theme';
 import { headerContentMock } from './Header.mock';
-import Theme from 'components/theme/Theme';
 
 function Header() {
   const props = headerContentMock;
 
   return (
-    <Layout>
-      <header className={styles.header}>
+    <Layout className={styles['header-wrapper']}>
+      <header className={styles['header']}>
         <div className={styles['header-left']}>
           <Link href={'/'}>
             <a className={styles['header-nav__logo']} title={'Opens the Home page'}>
@@ -29,12 +29,9 @@ function Header() {
               {props.nav.map((navLink, key) => {
                 return (
                   <li key={key} className={styles['header-nav__list-item']}>
-                    <Cta
-                      {...navLink}
-                      className={styles['header-nav__list-cta']}
-                    />
+                    <Cta {...navLink} className={styles['header-nav__list-cta']} />
                   </li>
-                )
+                );
               })}
             </ul>
           </nav>
@@ -45,6 +42,6 @@ function Header() {
       </header>
     </Layout>
   );
-};
+}
 
 export default Header;
