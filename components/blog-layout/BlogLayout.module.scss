@@ -1,0 +1,26 @@
+@import '../../styles/globals.scss';
+
+.blog-layout {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  padding: remify(50px) 0;
+
+  @include respond-to(md) {
+    justify-content: space-between;
+  }
+  
+  .aside {
+    max-width: remify(250px);
+    padding: 0 0 remify(32px);
+    display: none;
+
+    @include respond-to(md) {
+      display: block;
+    }
+  }
+
+  .article {
+    max-width: min(686px, 100%);
+  }
+}

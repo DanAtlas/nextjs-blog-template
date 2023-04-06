@@ -5,9 +5,9 @@ import Layout from 'components/layout/Layout';
 import Heading from 'components/heading/Heading';
 import { fetchPostHeader } from 'utils/mdxUtils';
 import { formatDate } from 'utils/formatDate';
-import type { PostContentProps } from '../types/posts';
+import type { PostsContentProps } from '../types/posts';
 
-const Home: NextPage<PostContentProps> = ({ post }) => {
+const Home: NextPage<PostsContentProps> = ({ post }) => {
   return (
     <>
       <Head>
@@ -18,7 +18,7 @@ const Home: NextPage<PostContentProps> = ({ post }) => {
 
       <Layout>
         <section>
-          <Heading headingLevel="h2" className={''}>
+          <Heading as="h2" className={''}>
             Recently published
           </Heading>
           <Link href="/posts">
@@ -30,7 +30,7 @@ const Home: NextPage<PostContentProps> = ({ post }) => {
                 <li key={key} className="posts-list__item">
                   <Link href={`posts/${postItem.slug}`}>
                     <a className="posts-list__link">
-                      <Heading headingLevel="h4" className={'posts-list__title'}>
+                      <Heading as="h4" className={'posts-list__title'}>
                         {postItem.title}
                       </Heading>
                       <small className="posts-list__date">{formatDate(postItem.date)}</small>

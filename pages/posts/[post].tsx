@@ -4,21 +4,22 @@ import type { ParsedUrlQuery } from 'querystring';
 import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
 import rehypeHighlight from 'rehype-highlight';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import path from 'path';
 import fs from 'fs';
 import Layout from 'components/layout/Layout';
-import BlogHeader from 'components/blog-header/BlogHeader';
-import BlogContent from 'components/blog-content/BlogContent';
+import BlogLayout from 'components/blog-layout/BlogLayout';
 import ThemeStyles from 'components/theme/ThemeStyles';
-import { fetchPostHeader, postsPath } from 'utils/mdxUtils';
+import { fetchPostHeader, getHeadings, postsPath } from 'utils/mdxUtils';
 import { useAppContext } from 'utils/contextHelper';
-import type { PostContentProps } from 'types/posts';
+import type { PostsContentProps } from 'types/posts';
 
 interface Params extends ParsedUrlQuery {
   post: string;
 }
 
-export default function postDetail({ post, postContent }: PostContentProps) {
+export default function postDetail({ post, postContent, headings }: PostsContentProps) {
   const postItem = post[0];
   const { theme } = useAppContext();
 
@@ -31,13 +32,12 @@ export default function postDetail({ post, postContent }: PostContentProps) {
 
       <Layout>
         <ThemeStyles theme={theme} />
-        <div className="post">
-          <article>
-            <BlogHeader postItem={postItem}></BlogHeader>
-            <BlogContent postContent={postContent} post={post}></BlogContent>
-          </article>
-          <aside></aside>
-        </div>
+        <BlogLayout 
+          post={post} 
+          postItem={postItem} 
+          postContent={postContent} 
+          headings={headings}
+        />
       </Layout>
     </>
   );
@@ -52,14 +52,27 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { content } = matter(fileContent);
   const postContent = await serialize(content, {
     mdxOptions: {
-      rehypePlugins: [rehypeHighlight],
+      rehypePlugins: [
+        rehypeHighlight,
+        rehypeSlug,
+        [
+          rehypeAutolinkHeadings,
+          {
+            properties: {
+              className: ["anchor"],
+            },
+          },
+        ],
+      ],
     },
   });
+  const headings = await getHeadings(content);
 
   return {
     props: {
       post,
       postContent,
+      headings
     },
   };
 };
