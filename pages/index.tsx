@@ -2,10 +2,10 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from 'components/layout/Layout';
-import { fetchPostContent } from 'utils/fetchPostContent';
-import { formatDate } from 'utils/formatDate';
-import type { PostContentProps } from './types/posts';
 import Heading from 'components/heading/Heading';
+import { fetchPostHeader } from 'utils/mdxUtils';
+import { formatDate } from 'utils/formatDate';
+import type { PostContentProps } from '../types/posts';
 
 const Home: NextPage<PostContentProps> = ({ post }) => {
   return (
@@ -18,7 +18,9 @@ const Home: NextPage<PostContentProps> = ({ post }) => {
 
       <Layout>
         <section>
-          <Heading headingLevel="h2" className={''}>Recently published</Heading>
+          <Heading headingLevel="h2" className={''}>
+            Recently published
+          </Heading>
           <Link href="/posts">
             <a>Posts</a>
           </Link>
@@ -28,28 +30,30 @@ const Home: NextPage<PostContentProps> = ({ post }) => {
                 <li key={key} className="posts-list__item">
                   <Link href={`posts/${postItem.slug}`}>
                     <a className="posts-list__link">
-                      <Heading headingLevel="h4" className={'posts-list__title'}>{postItem.title}</Heading>
+                      <Heading headingLevel="h4" className={'posts-list__title'}>
+                        {postItem.title}
+                      </Heading>
                       <small className="posts-list__date">{formatDate(postItem.date)}</small>
                     </a>
                   </Link>
                 </li>
-              )
+              );
             })}
           </ul>
         </section>
       </Layout>
     </>
-  )
-}
+  );
+};
 
-export const getStaticProps = async () =>  {
-  const post = fetchPostContent().filter(post => post.slug.toString());
+export const getStaticProps = async () => {
+  const post = fetchPostHeader().filter((post) => post.slug);
 
   return {
     props: {
-      post
-    }
-  }
-}
+      post,
+    },
+  };
+};
 
-export default Home
+export default Home;
