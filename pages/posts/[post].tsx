@@ -21,7 +21,7 @@ interface Params extends ParsedUrlQuery {
 
 export default function postDetail({ post, postContent, headings }: PostsContentProps) {
   const postItem = post[0];
-  const { theme } = useAppContext();
+  const { theme } = useAppContext(); // eslint-disable-line react-hooks/rules-of-hooks
 
   return (
     <>
