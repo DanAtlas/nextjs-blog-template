@@ -11,10 +11,6 @@
     margin-right: remify(12px);
   }
 
-  &:hover {
-    opacity: 0.8;
-  }
-
   &[disabled] {
     pointer-events: none;
     opacity: 0.8;
@@ -36,15 +32,27 @@
   // }
 
   &.size-small {
-    padding: remify(12px);
+    font-size: remify(14px);
   }
 
   &.size-medium {
-    padding: 1rem;
+    font-size: remify(16px);
   }
 
   &.size-large {
+    font-size: remify(18px);
+  }
+
+
+  &.padding-small {
+    padding: remify(12px);
+  }
+
+  &.padding-medium {
+    padding: 1rem;
+  }
+
+  &.padding-large {
     padding: fluid(18px, 24px);
-    font-size: fluid(16px, 18px);
   }
 }

@@ -5,9 +5,19 @@
 
   h2 {
     margin-top: remify(64px);
+    color: var(--color-title);
   }
 
   h3 {
     margin-top: remify(32px);
+  }
+  
+  a {
+    text-decoration: underline;
+    transition: 200ms ease 0s;
+  
+    &:hover {
+      color: var(--color-dark-blue);
+    }
   }
 }

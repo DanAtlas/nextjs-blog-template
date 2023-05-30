@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { CtaProps } from './Cta.types';
 
-function Cta({ href, title, copy, className, ctaTheme, ctaSize, target, icon }: CtaProps) {
+function Cta({ href, title, copy, className, ctaTheme, ctaSize, paddingSize, target, icon }: CtaProps) {
   return (
     <Link href={href}>
       <a
@@ -12,6 +12,7 @@ function Cta({ href, title, copy, className, ctaTheme, ctaSize, target, icon }: 
           className,
           styles[ctaTheme ?? ''],
           styles[!ctaSize ? 'size-medium' : ctaSize],
+          styles[paddingSize ? paddingSize : ''],
         ].join(' ')}
         title={title}
         target={href && target ? target : ''}

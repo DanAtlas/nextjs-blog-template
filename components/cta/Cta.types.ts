@@ -6,6 +6,7 @@ export type CtaProps = {
   target?: string | undefined;
   ctaTheme?: 'red' | 'yellow' | 'white';
   ctaSize?: 'size-small' | 'size-medium' | 'size-large';
+  paddingSize?: 'padding-small' | 'padding-medium' | 'padding-large';
   icon?: {
     url?: string;
     imgAlt: string;
