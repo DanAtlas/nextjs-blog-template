@@ -4,10 +4,10 @@ import Link from 'next/link';
 import Layout from 'components/layout/Layout';
 import Heading from 'components/heading/Heading';
 import { fetchPostHeader } from 'utils/mdxUtils';
-import { formatDate } from 'utils/formatDate';
 import type { PostsContentProps } from '../types/posts';
+import BlogList from 'components/blog-list/BlogList';
 
-const Home: NextPage<PostsContentProps> = ({ post }) => {
+const Home: NextPage<PostsContentProps> = ({ post, postItem }) => {
   return (
     <>
       <Head>
@@ -24,22 +24,7 @@ const Home: NextPage<PostsContentProps> = ({ post }) => {
           <Link href="/posts">
             <a>Posts</a>
           </Link>
-          <ul className="posts-list__wrapper">
-            {post.map((postItem, key) => {
-              return (
-                <li key={key} className="posts-list__item">
-                  <Link href={`posts/${postItem.slug}`}>
-                    <a className="posts-list__link">
-                      <Heading as="h4" className={'posts-list__title'}>
-                        {postItem.title}
-                      </Heading>
-                      <small className="posts-list__date">{formatDate(postItem.date)}</small>
-                    </a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <BlogList post={post} postItem={postItem} />
         </section>
       </Layout>
     </>
