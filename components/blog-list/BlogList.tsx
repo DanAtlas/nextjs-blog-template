@@ -2,7 +2,11 @@ import styles from './BlogList.module.scss';
 import PostCard from 'components/post-card/PostCard';
 import type { PostsContentProps } from 'types/posts';
 
-function BlogList({ post, postItem, limit }: PostsContentProps) {
+interface BlogListProps extends PostsContentProps {
+  limit?: number;
+}
+
+function BlogList({ post, postItem, limit }: BlogListProps) {
   return (
     <>
       <ul className={styles['blog-list']}>

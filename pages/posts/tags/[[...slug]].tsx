@@ -11,7 +11,11 @@ interface Params extends ParsedUrlQuery {
   post: string;
 }
 
-export default function tag({ post, postItem, tag }: PostsContentProps) {
+interface TagProps extends PostsContentProps {
+  tag: string;
+}
+
+export default function tag({ post, postItem, tag }: TagProps) {
   return (
     <>
       <Head>

@@ -3,7 +3,7 @@ import styles from './BlogLayout.module.scss';
 import BlogHeader from '../blog-header/BlogHeader';
 import BlogContent from '../blog-content/BlogContent';
 import TableOfContents from '../table-of-contents/TableOfContents';
-import type { PostsContentProps } from '../../types/posts'
+import type { PostsContentProps } from '../../types/posts';
 
 function BlogLayout({ post, postItem, postContent, headings }: PostsContentProps) {
   return (
