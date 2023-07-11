@@ -10,13 +10,13 @@ function Posts({ post, postItem }: PostsContentProps) {
     <>
       <Head>
         <title>Posts page</title>
-        <meta name="description" content="Posts list page" />
+        <meta name="description" content="A collection of my posts" />
       </Head>
 
       <Layout>
-        <section>
-          <Heading as="h1" className={''}>
-            Recently published
+        <section className="layout-section">
+          <Heading as="h1" className={'h2'}>
+            A collection of my posts
           </Heading>
           <BlogList post={post} postItem={postItem} />
         </section>

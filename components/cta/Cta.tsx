@@ -9,10 +9,10 @@ function Cta({ href, title, copy, className, ctaTheme, ctaSize, paddingSize, tar
       <a
         className={[
           styles.cta,
-          className,
           styles[ctaTheme ?? ''],
           styles[!ctaSize ? 'size-medium' : ctaSize],
           styles[paddingSize ? paddingSize : ''],
+          className,
         ].join(' ')}
         title={title}
         target={href && target ? target : ''}
@@ -30,7 +30,7 @@ function Cta({ href, title, copy, className, ctaTheme, ctaSize, paddingSize, tar
             />
           </span>
         )}
-        {copy}
+        <span>{copy}</span>
       </a>
     </Link>
   );

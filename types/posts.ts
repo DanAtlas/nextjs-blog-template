@@ -24,4 +24,6 @@ export type PostsContentProps = {
   postContent?: object;
   headings?: Array<HeadingProps>;
   postItem: PostItemProps;
+  tag?: string;
+  limit?: number;
 };

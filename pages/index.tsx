@@ -1,11 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
+import styles from './homepage.module.scss';
 import Layout from 'components/layout/Layout';
 import Heading from 'components/heading/Heading';
+import BlogList from 'components/blog-list/BlogList';
+import Cta from 'components/cta/Cta';
 import { fetchPostHeader } from 'utils/mdxUtils';
 import type { PostsContentProps } from '../types/posts';
-import BlogList from 'components/blog-list/BlogList';
 
 const Home: NextPage<PostsContentProps> = ({ post, postItem }) => {
   return (
@@ -17,14 +18,20 @@ const Home: NextPage<PostsContentProps> = ({ post, postItem }) => {
       </Head>
 
       <Layout>
-        <section>
-          <Heading as="h2" className={''}>
+        <section className={[styles['homepage'], "layout-section"].join(' ')}>
+          <Heading as="h1" className={'h2'}>
             Recently published
           </Heading>
-          <Link href="/posts">
-            <a>Posts</a>
-          </Link>
-          <BlogList post={post} postItem={postItem} />
+          <div className={styles['recent-posts__wrapper']}>
+            <Cta 
+              href="/posts" 
+              copy="View all posts" 
+              title="Opens the All Posts page"
+              className={styles['recent-posts__cta']}
+              ctaTheme="underline"
+            />
+            <BlogList post={post} postItem={postItem}  limit={3} />
+          </div>
         </section>
       </Layout>
     </>

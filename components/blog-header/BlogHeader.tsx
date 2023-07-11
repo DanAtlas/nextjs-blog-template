@@ -9,7 +9,7 @@ import type { PostItemContentProps } from 'types/posts';
 function BlogHeader({ postItem }: PostItemContentProps) {
   return (
     <div className={styles['blog-header']}>
-      <Heading as="h1" className={''}>
+      <Heading as="h1" className={'h1'}>
         {postItem.title}
       </Heading>
       <p>

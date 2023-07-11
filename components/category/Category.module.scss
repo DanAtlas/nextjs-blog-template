@@ -5,15 +5,30 @@
   margin: 0;
 
   &__item {
+    position: relative;
     display: inline-block;
-    padding: remify(2px) remify(8px);
     margin: 0 remify(8px) remify(8px) 0;
-    font-size: remify(13px);
-    background-color: var(--color-card-background);
-    border-radius: remify(4px);
 
     &:last-child {
       margin-right: 0;
+    }
+  }
+
+  &--default {
+    .category__item {
+      padding: remify(2px) remify(8px);
+      background-color: var(--color-card-background);
+      border-radius: remify(4px);
+
+      &:hover {
+        color: var(--color-dark-blue);
+      }
+    }
+  }
+
+  &--sharp {
+    @include respond-to(sm) {
+      text-align: right;
     }
   }
 }
