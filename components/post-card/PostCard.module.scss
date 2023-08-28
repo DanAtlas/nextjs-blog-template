@@ -9,7 +9,7 @@
 
   &__item,
   &__title {
-    transition: var(--transition);
+    transition: $transition;
   }
   
   &__item {

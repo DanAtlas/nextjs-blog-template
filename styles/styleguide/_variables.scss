@@ -1,37 +1,23 @@
-:root {
-  --color-white: #ffffff;
-  --color-light: #f2f2f2;
-  --color-lighter: #e2e2e2;
-  --color-black: #000000;
-  --color-dark: #222222;
-  --color-dark-2: #333333;
-  --color-cyan: #00bdf1;
-  --color-cyan-2: #00aacc;
-  --color-blue: #617bff;
-  --color-dark-blue: #34647f;
-  --color-yellow: #ffd400;
-  --color-pink: #cc0044;
-  --color-form-border: #a3a3a3;
-  --color-invalid: #ff0000;
-  --color-valid: #007f00;
-  
-  --dark-shadow: rgba(0, 0, 0, 0.8);
-  --white-shadow: rgba(20, 20, 20, 0.4);
-  --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+$colorWhite: #ffffff;
+$colorLight: #f2f2f2;
+$colorLighter: #e2e2e2;
+$colorBlack: #000000;
+$colorDark: #222222;
+$colorDark2: #333333;
+$colorCyan: #00bdf1;
+$colorCyan2: #00aacc;
+$colorBlue: #617bff;
+$colorDarkBlue: #34647f;
+$colorYellow: #ffd400;
+$colorPink: #cc0044;
+$colorFormBorder: #a3a3a3;
+$colorInvalid: #ff0000;
+$colorValid: #007f00;
 
-  --color-background: var(--color-light);
-  --color-text: var(--color-dark);
-  --color-title: var(--color-dark-blue);
-  --color-card-background: var(--color-lighter);
-  --color-card-shadow: var(--white-shadow);
+$darkShadow: rgba(0, 0, 0, 0.8);
+$whiteShadow: rgba(20, 20, 20, 0.4);
 
-  &.dark {
-    color-scheme: dark;
-  
-    --color-background: var(--color-dark);
-    --color-text: var(--color-light);
-    --color-title: var(--color-yellow);
-    --color-card-background: var(--color-dark-2);
-    --color-card-shadow: var(--dark-shadow);
-  }
-}
+$transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+
+// colors without hash (#)
+$darkBlue: str-slice(inspect($colorDarkBlue), 2);
