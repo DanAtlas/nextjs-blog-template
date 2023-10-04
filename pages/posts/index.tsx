@@ -1,40 +1,24 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import Layout from 'components/layout/Layout';
 import Heading from 'components/heading/Heading';
 import { fetchPostHeader } from 'utils/mdxUtils';
-import { formatDate } from 'utils/formatDate';
 import type { PostsContentProps } from 'types/posts';
+import BlogList from 'components/blog-list/BlogList';
 
-function Posts({ post }: PostsContentProps) {
+function Posts({ post, postItem }: PostsContentProps) {
   return (
     <>
       <Head>
         <title>Posts page</title>
-        <meta name="description" content="Posts list page" />
+        <meta name="description" content="A collection of my posts" />
       </Head>
 
       <Layout>
-        <section>
-          <Heading as="h1" className={''}>
-            Recently published
+        <section className="layout-section">
+          <Heading as="h1" className={'h2'}>
+            A collection of my posts
           </Heading>
-          <ul className="posts-list__wrapper">
-            {post.map((postItem, key) => {
-              return (
-                <li key={key} className="posts-list__item">
-                  <Link href={`posts/${postItem.slug}`}>
-                    <a className="posts-list__link">
-                      <Heading as="h3" className={'posts-list__title'}>
-                        {postItem.title}
-                      </Heading>
-                      <small className="posts-list__date">{formatDate(postItem.date)}</small>
-                    </a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <BlogList post={post} postItem={postItem} />
         </section>
       </Layout>
     </>

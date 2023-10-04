@@ -3,12 +3,13 @@ import Image from 'next/image';
 import styles from './BlogHeader.module.scss';
 import { formatDate } from '../../utils/formatDate';
 import Heading from '../heading/Heading';
+import Category from '../category/Category';
 import type { PostItemContentProps } from 'types/posts';
 
 function BlogHeader({ postItem }: PostItemContentProps) {
   return (
     <div className={styles['blog-header']}>
-      <Heading as="h1" className={''}>
+      <Heading as="h1" className={'h1'}>
         {postItem.title}
       </Heading>
       <p>
@@ -16,13 +17,7 @@ function BlogHeader({ postItem }: PostItemContentProps) {
           Published - {formatDate(postItem.date)} {postItem.author && `/ by ${postItem.author}`}
         </small>
       </p>
-      <p>
-        {postItem.tags.map((tag: string, index: number) => (
-          <span key={index} className={styles['tag']}>
-            {tag}
-          </span>
-        ))}
-      </p>
+      <Category categories={postItem.tags} />
       {postItem.bannerUrl && (
         <div>
           <Image

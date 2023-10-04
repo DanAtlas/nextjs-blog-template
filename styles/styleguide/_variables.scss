@@ -1,8 +1,10 @@
 :root {
   --color-white: #ffffff;
   --color-light: #f2f2f2;
+  --color-lighter: #e2e2e2;
   --color-black: #000000;
   --color-dark: #222222;
+  --color-dark-2: #333333;
   --color-cyan: #00bdf1;
   --color-cyan-2: #00aacc;
   --color-blue: #617bff;
@@ -12,10 +14,16 @@
   --color-form-border: #a3a3a3;
   --color-invalid: #ff0000;
   --color-valid: #007f00;
+  
+  --dark-shadow: rgba(0, 0, 0, 0.8);
+  --white-shadow: rgba(20, 20, 20, 0.4);
+  --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
 
   --color-background: var(--color-light);
   --color-text: var(--color-dark);
   --color-title: var(--color-dark-blue);
+  --color-card-background: var(--color-lighter);
+  --color-card-shadow: var(--white-shadow);
 
   &.dark {
     color-scheme: dark;
@@ -23,5 +31,7 @@
     --color-background: var(--color-dark);
     --color-text: var(--color-light);
     --color-title: var(--color-yellow);
+    --color-card-background: var(--color-dark-2);
+    --color-card-shadow: var(--dark-shadow);
   }
 }
