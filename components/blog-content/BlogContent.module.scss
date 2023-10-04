@@ -1,4 +1,13 @@
 @import '../../styles/globals.scss';
 
 .blog-content {
+  position: relative;
+
+  h2 {
+    margin-top: remify(64px);
+  }
+
+  h3 {
+    margin-top: remify(32px);
+  }
 }

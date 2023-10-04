@@ -8,12 +8,12 @@ import type { PostItemContentProps } from 'types/posts';
 function BlogHeader({ postItem }: PostItemContentProps) {
   return (
     <div className={styles['blog-header']}>
-      <Heading headingLevel="h1" className={''}>
+      <Heading as="h1" className={''}>
         {postItem.title}
       </Heading>
       <p>
         <small>
-          Published - {formatDate(postItem.date)} / by {postItem.author}
+          Published - {formatDate(postItem.date)} {postItem.author && `/ by ${postItem.author}`}
         </small>
       </p>
       <p>

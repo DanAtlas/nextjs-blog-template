@@ -3,7 +3,7 @@ import styles from './Theme.module.scss';
 import { useAppContext } from '../../utils/contextHelper';
 
 function Theme() {
-  const { theme, setTheme } = useAppContext();
+  const { theme, setTheme } = useAppContext(); // eslint-disable-line react-hooks/rules-of-hooks
   const [componentMounted, setComponentMounted] = useState(false);
 
   useEffect(() => {

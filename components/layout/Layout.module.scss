@@ -3,7 +3,11 @@
 .layout {
   .container {
     margin: 0 auto;
-    padding: 0 remify(20px);
+    padding: 0 remify(16px);
+
+    @include respond-to(md) {
+      padding: 0 remify(32px);
+    }
 
     &.container--large {
       max-width: remify(1100px);

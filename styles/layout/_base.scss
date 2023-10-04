@@ -17,6 +17,12 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+
+  &.dark {
+    .anchor .icon {
+      filter: invert(100%);
+    }
+  }
 }
 
 body {
@@ -28,4 +34,38 @@ body {
 
 a {
   color: $color-cyan;
+}
+
+.anchor {
+  position: absolute;
+  top: 50%;
+  left: remify(-40px);
+  transform: translate(0, -50%);
+  transition: opacity 250ms ease 0s;
+  opacity: 0;
+
+  @include respond-to(md) {
+    left: remify(-34px);
+  }
+
+  &:focus,
+  &:focus-visible,
+  h2:hover &,
+  h3:hover & {
+    opacity: 0.6;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 2px auto $color-white;
+    outline-offset: 2px;
+  }
+
+  .icon {
+    display: block;
+    width: remify(24px);
+    height: remify(24px);
+    background-image: url('/anchor.svg');
+    background-size: remify(24px);
+  }
 }

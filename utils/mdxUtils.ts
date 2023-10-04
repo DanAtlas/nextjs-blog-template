@@ -36,3 +36,19 @@ export function fetchPostHeader(): PostsProps {
   postCache = postHeaderData.sort((a, b) => (a.date < b.date ? 1 : -1));
   return postCache;
 }
+
+/**
+ * Util to get headings from mdx file content
+ */
+export async function getHeadings(source: string) {
+  const headingLines = source.split("\n").filter((line: string) => {
+    return line.match(/^###*\s/);
+  });
+
+  return headingLines.map((raw: string) => {
+    const text = raw.replace(/^###*\s/, "");
+    const level = raw.slice(0, 3) === "###" ? 3 : 2;
+
+    return { text, level };
+  });
+}
