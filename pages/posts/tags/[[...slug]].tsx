@@ -49,7 +49,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const post = fetchPostHeader().filter((post) => post.slug);
   const mergeArrays = (arr: Array<Array<string>>) => {
-    return [...new Set([].concat(...arr))];
+    return [...new Set([].concat(...arr))]; //@ts-ignore
   }
   const tagList = post.map(item => item.tags);
   const tags = mergeArrays(tagList);
