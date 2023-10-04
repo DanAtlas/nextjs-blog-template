@@ -7,11 +7,6 @@ export const headerContentMock: HeaderContentProps = {
   },
   nav: [
     {
-      href: '/latest',
-      copy: 'Latest',
-      title: 'Opens the Latest page',
-    },
-    {
       href: '/posts',
       copy: 'Posts',
       title: 'Opens the Posts page',

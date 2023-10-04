@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './TableOfContents.module.scss';
-import type { PostsContentProps, HeadingProps } from 'types/posts';
+import type { PostsContentProps, BlogContentHeadingProps } from 'types/posts';
 import Heading from '../heading/Heading';
 
 function smoothScroll(heading: string) {
@@ -39,7 +39,7 @@ function TableOfContents({ headings }: PostsContentProps) {
     <div className={styles['table-of-contents']}>
       <Heading as="h2" className={styles['table-of-contents__title']}>Table of Contents:</Heading>
       <ul className={styles['table-of-contents__list']}>
-        {headings && headings.map((heading: HeadingProps) => {
+        {headings && headings.map((heading: BlogContentHeadingProps) => {
           const headingId = heading.text.toLowerCase().replaceAll(' ', '-');
 
           return (

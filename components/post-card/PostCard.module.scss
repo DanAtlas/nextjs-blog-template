@@ -1,0 +1,67 @@
+@import '../../styles/globals.scss';
+
+.post-card {
+  &__item,
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item,
+  &__title {
+    transition: $transition;
+  }
+  
+  &__item {
+    position: relative;
+    height: 100%;
+    min-height: remify(162px);
+    flex-direction: column;
+    padding: remify(24px) remify(28px);
+    border-radius: remify(10px);
+    box-shadow: 0 remify(10px) remify(20px) remify(-15px) var(--color-card-shadow);
+    background-color: var(--color-card-background);
+
+    &:hover {
+      transform: translateY(-5px);
+
+      .post-card__title {
+        color: var(--color-title);
+      }
+    }
+  }
+
+  &__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__footer {
+    margin-top: remify(20px);
+    align-items: flex-start;
+    flex-direction: column;
+
+    @include respond-to(sm) {
+      align-items: center;
+      flex-direction: row;
+    }
+  }
+
+  &__date {
+    width: 100%;
+    max-width: remify(75px);
+    margin-right: remify(20px);
+  }
+
+  &__category {
+    z-index: 1;
+    padding: 0;
+    margin: 0 remify(8px) 0 0;
+    line-height: normal;
+  }
+}

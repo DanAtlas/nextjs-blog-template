@@ -1,7 +1,7 @@
 body,
 p {
   font-size: remify(16px);
-  line-height: remify(28px);
+  line-height: calc(1em + 0.725rem);
 }
 
 .h1,

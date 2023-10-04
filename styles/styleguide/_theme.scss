@@ -1,0 +1,35 @@
+@import 'variables';
+
+:root {
+  --color-white: #{$colorWhite};
+  --color-light: #{$colorLight};
+  --color-lighter: #{$colorLighter};
+  --color-black: #{$colorBlack};
+  --color-dark: #{$colorDark};
+  --color-dark-2: #{$colorDark2};
+  --color-cyan: #{$colorCyan};
+  --color-cyan-2: #{$colorCyan2};
+  --color-blue: #{$colorBlue};
+  --color-dark-blue: #{$colorDarkBlue};
+  --color-yellow: #{$colorYellow};
+  --color-pink: #{$colorPink};
+  --color-form-border: #{$colorFormBorder};
+  --color-invalid: #{$colorInvalid};
+  --color-valid: #{$colorValid};
+
+  --color-background: var(--color-light);
+  --color-text: var(--color-dark);
+  --color-title: var(--color-dark-blue);
+  --color-card-background: var(--color-lighter);
+  --color-card-shadow: #{$whiteShadow};
+
+  &.dark {
+    color-scheme: dark;
+  
+    --color-background: var(--color-dark);
+    --color-text: var(--color-light);
+    --color-title: var(--color-yellow);
+    --color-card-background: var(--color-dark-2);
+    --color-card-shadow: #{$darkShadow};
+  }
+}

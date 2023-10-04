@@ -1,0 +1,23 @@
+$colorWhite: #ffffff;
+$colorLight: #f2f2f2;
+$colorLighter: #e2e2e2;
+$colorBlack: #000000;
+$colorDark: #222222;
+$colorDark2: #333333;
+$colorCyan: #00bdf1;
+$colorCyan2: #00aacc;
+$colorBlue: #617bff;
+$colorDarkBlue: #34647f;
+$colorYellow: #ffd400;
+$colorPink: #cc0044;
+$colorFormBorder: #a3a3a3;
+$colorInvalid: #ff0000;
+$colorValid: #007f00;
+
+$darkShadow: rgba(0, 0, 0, 0.8);
+$whiteShadow: rgba(20, 20, 20, 0.4);
+
+$transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+
+// colors without hash (#)
+$darkBlue: str-slice(inspect($colorDarkBlue), 2);

@@ -33,7 +33,7 @@ body {
 }
 
 a {
-  color: $color-cyan;
+  color: var(--color-text);
 }
 
 .anchor {
@@ -57,7 +57,7 @@ a {
 
   &:focus,
   &:focus-visible {
-    outline: 2px auto $color-white;
+    outline: 2px auto var(--color-white);
     outline-offset: 2px;
   }
 
@@ -68,4 +68,8 @@ a {
     background-image: url('/anchor.svg');
     background-size: remify(24px);
   }
+}
+
+.layout-section {
+  padding: remify(50px) 0;
 }

@@ -52,3 +52,9 @@ export async function getHeadings(source: string) {
     return { text, level };
   });
 }
+
+export function countPosts(tag?: string): number {
+  return fetchPostHeader().filter(
+    (post) => !tag || (post.tags && post.tags.includes(tag))
+  ).length;
+}
