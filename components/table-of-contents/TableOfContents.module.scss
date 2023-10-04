@@ -20,9 +20,19 @@
 
   &__item {
     margin-top: remify(4px);
+    opacity: .7;
+    transition: opacity 300ms ease 0s;
 
     &:first-child {
       margin-top: 0;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    a {
+      display: block;
     }
   }
 

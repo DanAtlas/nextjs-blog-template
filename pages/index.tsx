@@ -1,13 +1,14 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
+import styles from './homepage.module.scss';
 import Layout from 'components/layout/Layout';
 import Heading from 'components/heading/Heading';
+import BlogList from 'components/blog-list/BlogList';
+import Cta from 'components/cta/Cta';
 import { fetchPostHeader } from 'utils/mdxUtils';
-import { formatDate } from 'utils/formatDate';
 import type { PostsContentProps } from '../types/posts';
 
-const Home: NextPage<PostsContentProps> = ({ post }) => {
+const Home: NextPage<PostsContentProps> = ({ post, postItem }) => {
   return (
     <>
       <Head>
@@ -17,29 +18,20 @@ const Home: NextPage<PostsContentProps> = ({ post }) => {
       </Head>
 
       <Layout>
-        <section>
-          <Heading as="h2" className={''}>
+        <section className={[styles['homepage'], "layout-section"].join(' ')}>
+          <Heading as="h1" className={'h2'}>
             Recently published
           </Heading>
-          <Link href="/posts">
-            <a>Posts</a>
-          </Link>
-          <ul className="posts-list__wrapper">
-            {post.map((postItem, key) => {
-              return (
-                <li key={key} className="posts-list__item">
-                  <Link href={`posts/${postItem.slug}`}>
-                    <a className="posts-list__link">
-                      <Heading as="h4" className={'posts-list__title'}>
-                        {postItem.title}
-                      </Heading>
-                      <small className="posts-list__date">{formatDate(postItem.date)}</small>
-                    </a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <div className={styles['recent-posts__wrapper']}>
+            <Cta 
+              href="/posts" 
+              copy="View all posts" 
+              title="Opens the All Posts page"
+              className={styles['recent-posts__cta']}
+              ctaTheme="underline"
+            />
+            <BlogList post={post} postItem={postItem}  limit={3} />
+          </div>
         </section>
       </Layout>
     </>

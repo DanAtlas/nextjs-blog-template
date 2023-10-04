@@ -1,0 +1,17 @@
+@import '../../styles/globals.scss';
+
+.blog-list {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-gap: remify(15px);
+  grid-template-columns: repeat(1, 1fr);
+
+  @include respond-to(xs) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

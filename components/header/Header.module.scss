@@ -17,9 +17,6 @@
     align-items: center;
   }
 
-  &-right {
-  }
-
   &-nav {
     margin-left: remify(40px);
 
@@ -35,5 +32,33 @@
   &-nav__list {
     margin: 0;
     padding: 0;
+    
+    &-item {
+      margin-left: remify(24px);
+
+      &:first-child {
+        margin: 0;
+      }
+    }
+
+    &-cta {
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: remify(2px);
+        background-color: var(--color-dark-blue);
+        transition: width .3s ease;
+      }
+
+      &:hover::before {
+        left: 0;
+        width: 100%;
+      }
+    }
   }
 }

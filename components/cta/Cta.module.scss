@@ -11,40 +11,53 @@
     margin-right: remify(12px);
   }
 
-  &:hover {
-    opacity: 0.8;
-  }
-
   &[disabled] {
     pointer-events: none;
     opacity: 0.8;
   }
 
-  // &.yellow {
-  //   background-color: $colorYellow;
-  //   color: $black;
-  // }
+  &.underline span {
+    position: relative;
 
-  // &.red {
-  //   background-color: $colorRed2;
-  //   color: $white;
-  // }
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: remify(-4px);
+      right: 0;
+      width: 0;
+      height: remify(2px);
+      background-color: var(--color-dark-blue);
+      transition: width .3s ease;
+    }
 
-  // &.white {
-  //   background-color: $white;
-  //   color: $colorRed2;
-  // }
+    &:hover::before {
+      left: 0;
+      width: 100%;
+    }
+  }
 
   &.size-small {
-    padding: remify(12px);
+    font-size: remify(13px);
   }
 
   &.size-medium {
-    padding: 1rem;
+    font-size: remify(16px);
   }
 
   &.size-large {
+    font-size: remify(18px);
+  }
+
+
+  &.padding-small {
+    padding: remify(12px);
+  }
+
+  &.padding-medium {
+    padding: 1rem;
+  }
+
+  &.padding-large {
     padding: fluid(18px, 24px);
-    font-size: fluid(16px, 18px);
   }
 }

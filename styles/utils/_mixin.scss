@@ -1,20 +1,20 @@
 @mixin heading-1 {
-  font-size: remify(34px);
-  line-height: remify(40px);
+  font-size: remify(38px);
+  line-height: remify(44px);
 
   @include respond-to(sm) {
-    font-size: remify(36px);
-    line-height: remify(42px);
+    font-size: remify(42px);
+    line-height: remify(48px);
   }
 }
 
 @mixin heading-2 {
-  font-size: remify(30px);
-  line-height: remify(36px);
+  font-size: remify(32px);
+  line-height: remify(38px);
 
   @include respond-to(sm) {
-    font-size: remify(32px);
-    line-height: remify(38px);
+    font-size: remify(34px);
+    line-height: remify(40px);
   }
 }
 
@@ -29,31 +29,31 @@
 }
 
 @mixin heading-4 {
-  font-size: remify(22px);
-  line-height: remify(28px);
+  font-size: remify(20px);
+  line-height: remify(26px);
 
   @include respond-to(sm) {
-    font-size: remify(24px);
-    line-height: remify(30px);
+    font-size: remify(22px);
+    line-height: remify(28px);
   }
 }
 
 @mixin heading-5 {
-  font-size: remify(18px);
-  line-height: remify(24px);
-
-  @include respond-to(sm) {
-    font-size: remify(20px);
-    line-height: remify(26px);
-  }
-}
-
-@mixin heading-6 {
   font-size: remify(14px);
   line-height: remify(20px);
 
   @include respond-to(sm) {
     font-size: remify(16px);
     line-height: remify(22px);
+  }
+}
+
+@mixin heading-6 {
+  font-size: remify(10px);
+  line-height: remify(16px);
+
+  @include respond-to(sm) {
+    font-size: remify(12px);
+    line-height: remify(18px);
   }
 }
