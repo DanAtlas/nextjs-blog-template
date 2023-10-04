@@ -19,7 +19,7 @@ export default function tag({ post, postItem, tag }: TagProps) {
   return (
     <>
       <Head>
-        <title>Tagged: #{tag} page</title>
+        <title>{`Tagged: #${tag} page`}</title>
         <meta name="description" content={`Tagged: #${tag} page`} />
       </Head>
 

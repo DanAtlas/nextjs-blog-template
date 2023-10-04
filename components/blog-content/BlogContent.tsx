@@ -4,6 +4,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import styles from './BlogContent.module.scss';
 import Heading from '../heading/Heading';
 import Quote from '../quote/Quote';
+import List from 'components/list/List';
 import type { PostsContentProps } from 'types/posts';
 
 const components = {
@@ -17,6 +18,8 @@ const components = {
     <Image src={''} width={700} height={468} objectFit="contain" loading="lazy" {...props} />
   ),
   blockquote: (props: object) => <Quote {...props} />,
+  ul: (props: object) => <List listType="unordered" {...props} />,
+  ol: (props: object) => <List listType="ordered" {...props} />,
 };
 
 function BlogContent({ postContent }: PostsContentProps) {
