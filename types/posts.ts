@@ -14,7 +14,7 @@ export type PostItemContentProps = {
   postItem: PostItemProps;
 };
 
-export type HeadingProps = {
+export type BlogContentHeadingProps = {
   text: string;
   level: number; 
 };
@@ -22,6 +22,6 @@ export type HeadingProps = {
 export type PostsContentProps = {
   post: PostsProps;
   postContent?: object;
-  headings?: Array<HeadingProps>;
+  headings?: Array<BlogContentHeadingProps>;
   postItem: PostItemProps;
 };

@@ -4,7 +4,7 @@ export type CtaProps = {
   copy: string;
   className?: string;
   target?: string | undefined;
-  ctaTheme?: 'red' | 'yellow' | 'white';
+  ctaTheme?: 'underline';
   ctaSize?: 'size-small' | 'size-medium' | 'size-large';
   paddingSize?: 'padding-small' | 'padding-medium' | 'padding-large';
   icon?: {
